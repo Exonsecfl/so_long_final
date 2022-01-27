@@ -1,5 +1,6 @@
 SRCS   =	get_next_line_utils.c \
 			get_next_line.c \
+			ft_itoa.c \
 			s_map.c \
 			s_map_compteurs.c \
 			s_vars_key.c \

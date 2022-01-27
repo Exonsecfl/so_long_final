@@ -23,7 +23,6 @@
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	vars->s_map.nb_pas++;
 	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->mlx_win);
@@ -46,27 +45,23 @@ int	key_hook(int keycode, t_vars *vars)
 
 struct s_vars	load_image(struct s_vars vars)
 {
-	int	img_w;
-	int	img_h;
+	int	img;
 
-	vars.imb.img = mlx_xpm_file_to_image(vars.mlx, "X_Brown.xpm", &img_w,
-			&img_h);
-	vars.imf.img = mlx_xpm_file_to_image(vars.mlx, "X_Green.xpm", &img_w,
-			&img_h);
-	vars.imc.img = mlx_xpm_file_to_image(vars.mlx, "X_Collectible.xpm", &img_w,
-			&img_h);
-	vars.ime.img = mlx_xpm_file_to_image(vars.mlx, "X_End.xpm", &img_w,
-			&img_h);
-	vars.imp.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_1.xpm", &img_w,
-			&img_h);
-	vars.im2.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_2.xpm", &img_w,
-			&img_h);
-	vars.im3.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_3.xpm", &img_w,
-			&img_h);
-	vars.im4.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_4.xpm", &img_w,
-			&img_h);
-	vars.im5.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_5.xpm", &img_w,
-			&img_h);
+	vars.imb.img = mlx_xpm_file_to_image(vars.mlx, "X_Brown.xpm", &img, &img);
+	vars.imf.img = mlx_xpm_file_to_image(vars.mlx, "X_Green.xpm", &img, &img);
+	vars.imc.img = mlx_xpm_file_to_image(vars.mlx, "X_Collectible.xpm", &img,
+			&img);
+	vars.ime.img = mlx_xpm_file_to_image(vars.mlx, "X_End.xpm", &img, &img);
+	vars.imp.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_1.xpm", &img,
+			&img);
+	vars.im2.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_2.xpm", &img,
+			&img);
+	vars.im3.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_3.xpm", &img,
+			&img);
+	vars.im4.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_4.xpm", &img,
+			&img);
+	vars.im5.img = mlx_xpm_file_to_image(vars.mlx, "X_Player_5.xpm", &img,
+			&img);
 	return (vars);
 }
 /* -----------------------------------------------------------------------------
@@ -99,6 +94,35 @@ struct s_vars	load_image_s(struct s_vars vars)
  * Affiche .ber map avec les image files
  */
 
+struct s_vars	aff_ber_if(struct s_vars vars, int l, int c)
+{
+	if (vars.s_map.map[l][c] == 'P')
+	{
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
+			c * 64, l * 64);
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imp.img,
+			c * 64, l * 64);
+	}
+	if (vars.s_map.map[l][c] == 'C')
+	{
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
+			c * 64, l * 64);
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imc.img,
+			c * 64, l * 64);
+	}
+	if (vars.s_map.map[l][c] == 'E')
+	{
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
+			c * 64, l * 64);
+		mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.ime.img,
+			c * 64, l * 64);
+	}
+	return (vars);
+}
+/* -----------------------------------------------------------------------------
+ * Affiche .ber map avec les image files
+ */
+
 struct s_vars	aff_ber(struct s_vars vars)
 {
 	int	l;
@@ -116,27 +140,7 @@ struct s_vars	aff_ber(struct s_vars vars)
 			if (vars.s_map.map[l][c] == '0')
 				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
 					c * 64, l * 64);
-			if (vars.s_map.map[l][c] == 'P')
-			{
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
-					c * 64, l * 64);
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imp.img,
-					c * 64, l * 64);
-			}
-			if (vars.s_map.map[l][c] == 'C')
-			{
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
-					c * 64, l * 64);
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imc.img,
-					c * 64, l * 64);
-			}
-			if (vars.s_map.map[l][c] == 'E')
-			{
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.imf.img,
-					c * 64, l * 64);
-				mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.ime.img,
-					c * 64, l * 64);
-			}
+			vars = aff_ber_if(vars, l, c);
 			c++;
 		}
 		l++;

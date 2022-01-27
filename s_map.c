@@ -117,6 +117,7 @@ struct s_map	load_info(char *file)
 		else
 		{
 			s_map = trait_info(s_map, line);
+			free(line);
 		}
 	}
 	return ((s_map));

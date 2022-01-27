@@ -17,8 +17,8 @@
  */
 int	closeg(int keycode, t_vars *vars)
 {
-	(void)	keycode;
-	(void)	vars;
+	(void) keycode;
+	(void) vars;
 	exit(0);
 }
 /* -----------------------------------------------------------------------------
