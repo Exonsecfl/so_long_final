@@ -3,6 +3,7 @@ SRCS   =	get_next_line_utils.c \
 			ft_itoa.c \
 			s_map.c \
 			s_map_compteurs.c \
+			s_vars_fleche.c \
 			s_vars_key.c \
 			s_vars_refresh.c \
 			main.c
