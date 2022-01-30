@@ -19,7 +19,6 @@
 # include <stddef.h>
 # include <limits.h>
 
-
 char	*get_next_line(int fd);
 void	*gnl_calloc(size_t count, size_t size);
 void	*gnl_bzero(void *str, size_t n);

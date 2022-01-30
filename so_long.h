@@ -61,6 +61,7 @@ struct s_map	check_s_map(struct s_map s_map);
 struct s_map	compteurs_s_map_3(struct s_map s_map);
 struct s_map	compteurs_s_map_2(struct s_map s_map);
 struct s_map	compteurs_s_map(struct s_map s_map);
+struct s_vars	key_trait_s(struct s_vars *vars, int new_l, int new_c);
 struct s_vars	key_trait(struct s_vars *vars, int new_l, int new_c);
 struct s_vars	key_gauche(struct s_vars *vars);
 struct s_vars	key_bas(struct s_vars *vars);

@@ -34,6 +34,7 @@ struct s_vars	key_trait_s(struct s_vars *vars, int new_l, int new_c)
 	vars->s_map.player_c = new_c;
 	vars->s_map.player_l = new_l;
 	vars->s_map.nb_pas++;
+	return (*vars);
 }
 
 /* -----------------------------------------------------------------------------
@@ -62,7 +63,7 @@ struct s_vars	key_trait(struct s_vars *vars, int new_l, int new_c)
 	}
 	if (vars->s_map.map[new_l][new_c] == '0')
 	{
-		vars = key_trait_s(vars, new_l, new_c);
+		*vars = key_trait_s(vars, new_l, new_c);
 		printf("\n compteur de pas : %d ", vars->s_map.nb_pas);
 		mlx_string_put(vars->mlx, vars->mlx_win, 20, 20, 0x0000FF00,
 			"Nb. de pas : ");
