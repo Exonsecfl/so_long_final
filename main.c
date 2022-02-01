@@ -59,7 +59,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write (1, "Parametre MAP.ber manquant", 26);
+		printf ("\nError :");
+		printf ("\nParametre MAP.ber manquant");
 		return (0);
 	}
 	s_map = load_info(argv[1]);
@@ -71,13 +72,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printf ("\nnb ligne %d", s_map.nbl);
-		printf ("\nlen ligne %d", s_map.nbc);
-		printf ("\nnb player %d", s_map.nb_player);
-		printf ("\nnb collect %d", s_map.nb_collectable);
-		printf ("\nnb exit %d", s_map.nb_exit);
-		printf ("\nerr_map %d", s_map.err_map);
-		printf("le fichier %s est incorrect / inexistant", argv[1]);
-		printf ("\nerr_map %d", s_map.err_map);
+		printf ("\nError :");
+		printf("\nle fichier %s est incorrect / inexistant", argv[1]);
 	}
 }
